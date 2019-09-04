@@ -1,7 +1,27 @@
 package Main;
 
 public class Mensaje {
-	public Mensaje( String men, Cliente cliente ) {
-		
+	
+	private String mensaje;
+	
+	boolean leido = false;
+	
+	private Buffer buffer;
+	
+	public Mensaje( String pMensaje, Buffer pBuffer) {
+		mensaje = pMensaje;
+		buffer = pBuffer;
 	}
+	
+	public void enviarMensaje() {
+		buffer.almacenar(this);
+		while(!leido) {
+			try {
+				wait();
+			}catch(Exception e) {
+				
+			}
+		}
+	}
+	
 }
