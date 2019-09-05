@@ -15,6 +15,7 @@ public class Cliente extends Thread{
 	public void run(){
 		for (int i = 0; i < consultas; i++) {
 			Mensaje men = new Mensaje(cedula, buff);
+			men.enviarMensaje();
 		}
 	}
 	

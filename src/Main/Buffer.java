@@ -21,10 +21,7 @@ public class Buffer {
 				catch( InterruptedException e ){}
 			}
 		}
-		synchronized( this ){ 
-			buff.add( i ); 
-			i.enviarMensaje();
-		}
+		synchronized( this ){ buff.add( i ); }
 		synchronized( vacío ){ vacío.notify(); }
 	}
 
@@ -36,10 +33,7 @@ public class Buffer {
 			}
 		}
 		Mensaje i;
-		synchronized( this ){ 
-			i = buff.remove(0); 
-			i.retirarMensaje();
-		}
+		synchronized( this ){ i = buff.remove(0); }
 		synchronized( lleno ){ lleno.notify( ); }
 		return i;
 	}
