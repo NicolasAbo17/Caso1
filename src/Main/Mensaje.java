@@ -4,7 +4,7 @@ public class Mensaje {
 	
 	private String mensaje;
 	
-	boolean leido = false;
+	private boolean leido = false;
 	
 	private Buffer buffer;
 	
@@ -26,6 +26,11 @@ public class Mensaje {
 	
 	public String getMensaje() {
 		return mensaje;
+	}
+	
+	public void cambiarLeido() {
+		leido = !leido;
+		notify();
 	}
 	
 }
