@@ -8,12 +8,14 @@ public class Mensaje {
 	
 	private Buffer buffer;
 	
-	public Mensaje( String pMensaje, Buffer pBuffer) {
+	private int cons;
+	public Mensaje( String pMensaje, Buffer pBuffer, int pCons) {
 		mensaje = pMensaje;
 		buffer = pBuffer;
+		cons = pCons;
 	}
 	
-	public void enviarMensaje() {
+	public synchronized void enviarMensaje() {
 		buffer.almacenar(this);
 		while(!leido) {
 			try {
@@ -25,10 +27,10 @@ public class Mensaje {
 	}
 	
 	public String getMensaje() {
-		return mensaje;
+		return "Mensaje cliente " + mensaje + " consulta " + cons;
 	}
 	
-	public void cambiarLeido() {
+	public synchronized void cambiarLeido() {
 		leido = !leido;
 		notify();
 	}
