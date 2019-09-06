@@ -19,8 +19,8 @@ public class Buffer {
 				try { lleno.wait( ); }
 				catch( InterruptedException e ){}
 			}
+			synchronized( this ){ buff.add( i ); }
 		}
-		synchronized( this ){ buff.add( i ); }
 	}
 
 	public Mensaje retirar (){
