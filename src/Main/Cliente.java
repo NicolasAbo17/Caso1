@@ -17,6 +17,7 @@ public class Cliente extends Thread{
 			Mensaje men = new Mensaje(cedula, buff, i);
 			men.enviarMensaje();
 		}
+		buff.terminar();
 	}
 	
 }

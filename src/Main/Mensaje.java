@@ -27,7 +27,7 @@ public class Mensaje {
 	}
 	
 	public String getMensaje() {
-		return "Mensaje cliente " + mensaje + " consulta " + cons;
+		return "Soy el mensaje del cliente " + mensaje + " consulta número " + cons;
 	}
 	
 	public synchronized void cambiarLeido() {

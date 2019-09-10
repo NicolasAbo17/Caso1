@@ -5,10 +5,13 @@ import java.util.ArrayList;
 public class Buffer {
 	private ArrayList<Mensaje> buff;
 	private int n;
+	private int c;
+	
 	Object lleno;
 
-	public Buffer ( int n ) {
+	public Buffer ( int n, int c ) {
 		this.n = n;
+		this.c = c;
 		buff = new ArrayList<Mensaje>( );
 		lleno = new Object();
 	}
@@ -33,5 +36,12 @@ public class Buffer {
 		}
 		synchronized( lleno ){ lleno.notify( ); }
 		return i;
+	}
+	
+	public synchronized void terminar() {
+		if(--c == 0) {
+			System.out.println("Todas las consultas finalizadas");
+			System.exit(0);
+		}
 	}
 }
